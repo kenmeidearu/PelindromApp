@@ -17,11 +17,18 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         text=findViewById(R.id.editText);
         Button button=findViewById(R.id.button);
+        Button button2=findViewById(R.id.button2);
         result=findViewById(R.id.resultText);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 convertPolindrom(text.getEditableText().toString());
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                otherPelindrom(text.getEditableText().toString());
             }
         });
     }
@@ -35,5 +42,22 @@ public class Main2Activity extends AppCompatActivity {
             result.setText("The word is a Palindrome");
         else
             result.setText("The word is not a Palindrome");
+    }
+
+    private void otherPelindrom(String sc){
+        String strOrigin = sc.replace(" ", "");
+        String strReversed = "";
+
+        char[] charOrigin = strOrigin.toCharArray();
+
+        for(int i = strOrigin.length() - 1; i >= 0; i--){
+            strReversed+= charOrigin[i];
+        }
+
+        if(strOrigin.toLowerCase().equals(strReversed.toLowerCase())){
+            result.setText("Palindrom");
+        } else {
+            result.setText("Bukan Palindrom");
+        }
     }
 }
