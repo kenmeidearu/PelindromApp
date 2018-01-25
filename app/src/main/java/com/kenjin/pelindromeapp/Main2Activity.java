@@ -18,6 +18,8 @@ public class Main2Activity extends AppCompatActivity {
         text=findViewById(R.id.editText);
         Button button=findViewById(R.id.button);
         Button button2=findViewById(R.id.button2);
+        Button button3=findViewById(R.id.button3);
+
         result=findViewById(R.id.resultText);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +33,13 @@ public class Main2Activity extends AppCompatActivity {
                 otherPelindrom(text.getEditableText().toString());
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isPalindrom(text.getEditableText().toString());
+            }
+        });
+
     }
     private  void  convertPolindrom(String word){
         int firstPosition = 0;
@@ -58,6 +67,16 @@ public class Main2Activity extends AppCompatActivity {
             result.setText("Palindrom");
         } else {
             result.setText("Bukan Palindrom");
+        }
+    }
+
+    private void isPalindrom(String word){
+        String feed=word.replaceAll("\\s+","");
+        String rev=new StringBuffer(feed).reverse().toString();
+        if(rev.equalsIgnoreCase(feed)){
+            result.setText("Is Palindrom");
+        }else{
+            result.setText("Not Palindrom");
         }
     }
 }
